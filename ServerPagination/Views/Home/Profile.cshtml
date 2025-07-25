@@ -1,0 +1,117 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Profile Page";
+}
+<div class="wraper container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-box m-t-20">
+                <h4 class="m-t-0 header-title"><b>Update Profile</b></h4>
+
+                <div class="bg-picture text-center m-0">
+                    <div class="profile-info-name">
+                        <img src="~/assets/images/users/avatar-1.jpg" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
+                        <h4 class="m-b-5"><b>Chadengle</b></h4>
+                        <p class="text-muted"><i class="fa fa-map-marker"></i> New york, United States</p>
+                    </div>
+                </div>
+                <form class="m-t-30" id="AddUserForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">FirstName</label>
+                                <input type="text" class="form-control" id="field-1" asp-for="FirstName" placeholder="John" />
+                                <span class="text-danger text-sm" asp-validation-for="FirstName"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">Lastname</label>
+                                <input type="text" class="form-control" id="field-2" asp-for="LastName" placeholder="Doe" />
+                                <span class="text-danger text-sm" asp-validation-for="LastName"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-3" class="control-label">Email</label>
+                                <input type="email" class="form-control" id="field-3" asp-for="EmailAddress" placeholder="email123@gmail.com" />
+                                <span class="text-danger text-sm" asp-validation-for="EmailAddress"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="field-4" class="control-label">Mobile No</label>
+                                <input type="tel" class="form-control" id="field-4" asp-for="MobileNo" placeholder="1234567890" />
+                                <span class="text-danger text-sm" asp-validation-for="MobileNo"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-b-5">
+                        <div class="col-md-4">
+                            <div>
+                                <label>Gender</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" id="inlineRadio1" value="Male" name="Gender" asp-for="Gender" />
+                                <label for="inlineRadio1"> Male </label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" id="inlineRadio" value="Female" name="Gender" asp-for="Gender" />
+                                <label for="inlineRadio"> Female </label>
+                            </div>
+                        </div>
+                        <span class="text-danger text-sm" asp-validation-for="Gender"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button type="reset" class="btn btn-default waves-effect">reset</button>
+                            <button type="button" class="btn btn-info waves-effect waves-light">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card-box m-t-20">
+                <h4 class="m-t-0 header-title"><b>Change Password</b></h4>
+                <form class="m-t-30" id="AddUserForm">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Old Password</label>
+                                <input type="password" class="form-control" id="field-1" placeholder="Enter Old Password" />
+                                <span class="text-danger text-sm"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">New Password</label>
+                                <input type="password" class="form-control" id="field-1" placeholder="Enter New Password" />
+                                <span class="text-danger text-sm"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="field-2" class="control-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="field-1" placeholder="Enter Confirm Password" />
+                                <span class="text-danger text-sm"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="reset" class="btn btn-default waves-effect">reset</button>
+                            <button type="button" class="btn btn-info waves-effect waves-light">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

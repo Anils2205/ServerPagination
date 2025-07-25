@@ -1,0 +1,52 @@
+﻿@model EditUserModel
+<form id="ViewUserForm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="FirstName" class="control-label">First Name</label>
+                <input type="text" class="form-control" id="FirstName" asp-for="FirstName" readonly />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Lastname" class="control-label">Last Name</label>
+                <input type="text" class="form-control" id="LastName" asp-for="LastName" readonly />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="EmailAddress" class="control-label">Email Address</label>
+                <input type="email" class="form-control" id="EmailAddress" asp-for="EmailAddress" readonly />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="MobileNo" class="control-label">Mobile No</label>
+                <input type="tel" class="form-control" id="MobileNo" asp-for="MobileNo" readonly />
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 5px;">
+        <div class="col-md-4">
+            <div>
+                <label>Gender</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="Male" value="Male" asp-for="Gender" disabled>
+                <label for="Male"> Male </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="radio radio-info radio-inline">
+                <input type="radio" id="Female" value="Female" asp-for="Gender" disabled>
+                <label for="Female"> Female </label>
+            </div>
+        </div>
+    </div>
+</form>

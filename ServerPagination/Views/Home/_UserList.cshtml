@@ -1,0 +1,124 @@
+﻿@model PaginationModel
+<link href="~/assets/plugins/custombox/dist/custombox.min.css" rel="stylesheet">
+<div class="table-responsive" data-pattern="priority-columns">
+    <table class="table table-striped m-b-0 table-hover toggle-circle">
+        <thead>
+            <tr class="info">
+                <th>CreatedDate</th>
+                <th class="text-center">Profile</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            <tbody>
+                @for (int i = 0; i < Model.UserList.Count; i++)
+                {
+                    <tr>
+                        <td>@(Model.UserList[i].CreatedDate.Value.ToString("dd MMM yyyy"))</td>
+                        <td class="text-center">
+                            <img src="~/assets/images/users/@Model.UserList[i].ProfileImage" alt="contact-img" title="contact-img" class="img-circle thumb-sm">
+                        </td>
+                        <td>@(Model.UserList[i].FirstName + " " + Model.UserList[i].LastName) </td>
+                        <td>@Model.UserList[i].Gender</td>
+                        <td>@Model.UserList[i].EmailAddress</td>
+                        <td>@Model.UserList[i].MobileNo</td>
+                        <td class="text-center">
+                            @if (Model.UserList[i].IsActive == false)
+                            {
+                                <button class="btn btn-danger btn-xs btn-icon fa fa-lock m-l-10" onclick="ActiveManage(@Model.UserList[i].UserId)"></button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-success btn-xs btn-icon fa fa-unlock  m-l-10" onclick="ActiveManage(@Model.UserList[i].UserId)"></button>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-warning btn-xs btn-icon fa fa-eye" data-toggle="modal" data-target="#view-modal" onclick="ViewUser(@Model.UserList[i].UserId)"></button>
+                            <button class="btn btn-success btn-xs btn-icon fa fa-pencil" data-toggle="modal" data-target="#edit-modal" onclick="GetUser(@Model.UserList[i].UserId)"></button>
+                            <button class="btn btn-danger btn-xs btn-icon fa fa-times" onclick="DeleteUser(@Model.UserList[i].UserId)"></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            if (Model.Pagination.Totalrecord != 0)
+            {
+                <tfoot>
+                    <tr>
+                        <td colspan="10">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div>
+                                        <span class="pagination pagination-split m-t-30">Showing <b>@Model.Pagination.StartIndex</b> to <b>@Model.Pagination.EndIndex</b> of <b>@Model.Pagination.Totalrecord</b> entries</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-right">
+                                        <ul class="pagination pagination-split m-t-30">
+                                            @if (!Model.Pagination.ShowPrevious)
+                                            {
+                                                <li class="disabled">
+                                                    <a><b>‹</b></a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a href="javascript:void(0);" onclick="UserList(@Model.Pagination.CurrentPage - 1)"><b>‹</b></a>
+                                                </li>
+                                            }
+                                            @for (int page = Model.Pagination.StartPage; page <= Model.Pagination.EndPage; page++)
+                                            {
+                                                if (page == Model.Pagination.CurrentPage)
+                                                {
+                                                    <li>
+                                                        <a href="javascript:void(0);" class="btn btn-default btn-md waves-effect waves-light" onclick="UserList(@(page))" class="current-page">
+                                                            <b>@(page)</b>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a href="javascript:void(0);" onclick="UserList(@(page))" class="next-page">
+                                                            @(page)
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            @if (!Model.Pagination.ShowNext)
+                                            {
+                                                <li class="disabled">
+                                                    <a class="disabled"><b>›</b></a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a href="javascript:void(0);" onclick="UserList(@Model.Pagination.CurrentPage + 1)"><b>›</b></a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            }
+            else
+            {
+                <tbody>
+                    <tr>
+                        <td colspan="8" class="text-center text-danger">No Records</td>
+                    </tr>
+                </tbody>
+            }
+        }
+    </table>
+</div>

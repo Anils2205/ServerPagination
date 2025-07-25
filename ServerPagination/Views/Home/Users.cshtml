@@ -1,0 +1,94 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "User Page";
+}
+<link href="~/assets/plugins/custombox/dist/custombox.min.css" rel="stylesheet">
+<div class="card-box m-t-0 m-b-0">
+    <div class="pad-btm form-inline">
+        <div class="row">
+            <div class="col-sm-6 text-xs-center">
+                <div class="form-group">
+                    <button class="btn btn-default btn-md waves-effect waves-light m-b-20" data-toggle="modal" data-target="#add-modal" onclick="OpenAddUserForm()">
+                        <i class="fa fa-plus m-r-5"></i> Add User
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-6 text-xs-center text-right">
+                <div class="form-group">
+                    <input id="demo-input-search2" type="text" placeholder="Search" class="form-control input-md" autocomplete="off">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="UserListPartial">
+        @await Html.PartialAsync("_UserList",ViewData["UserList"])
+    </div>
+    <div id="add-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="AddClearModalData()" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Add User</h4>
+                </div>
+                <div class="modal-body" id="addUserBody">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="addclose" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info waves-effect waves-light" onclick="AddUser()">Add user</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="view-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">View User Details</h4>
+            </div>
+            <div class="modal-body" id="viewUserBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="edit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="EditClearModalData">×</button>
+                <h4 class="modal-title">Edit User</h4>
+            </div>
+            <div class="modal-body" id="editUserBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="editclose" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info waves-effect waves-light" onclick="EditUser()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="add-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="AddClearModalData()" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Add User</h4>
+            </div>
+            <div class="modal-body" id="addUserBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addclose" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info waves-effect waves-light" onclick="AddUser()">Add user</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/plugins/custombox/dist/custombox.min.js"></script>
+<script src="~/assets/plugins/custombox/dist/legacy.min.js"></script>
+<script src="~/lib/sweetalert/sweetalert.js"></script>
+<script src="~/assets/js/jquery.min.js"></script>
+<script src="~/js/home/userlist.js"></script>
