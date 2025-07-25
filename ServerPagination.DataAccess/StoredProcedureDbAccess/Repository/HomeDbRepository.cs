@@ -87,7 +87,7 @@ namespace EmployeeAPIDemo.Web.DataAccess.StoredProcedureDbAccess.Repository
         public PaginationModel UserList(int pageNumber, string searchQuery)
         {
             PaginationModel pagination = new PaginationModel();
-            int pageSize = 10; // Fixed page size
+            int pageSize = 5; // Fixed page size
 
             using var vconn = GetOpenConnection();
             var vParams = new DynamicParameters();
